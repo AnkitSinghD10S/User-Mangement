@@ -1,0 +1,70 @@
+﻿@model List<UserDetails>
+<div class="Container">
+    <div class="row pt-4">
+        <div class="col-6 text-end ms-5">
+            <h2  >User Management</h2>
+        <form action="Users" method="post">
+            <input id="search bar" type="text" name="userName" placeholder="Enter the person name"/>
+            <button type="submit" class="btn-primary">Search</button>
+        </form>
+        </div>
+    </div>
+</div>
+<div class="table-responsive">
+    <table class="table table-striped table-hover">
+        <thead>
+            <tr>
+                <th>FirstName</th>
+                <th>LastName</th>
+                <th>Date of Birth</th>
+                <th>Gender</th>
+                <th>Email Address</th>
+                <th>Edit</th>
+                <th>Details</th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (var entry in Model)
+            {
+                @if (entry == null)
+                {
+                    <h1>null</h1>
+                }
+                <tr>
+                    <td>@entry.FirstName</td>
+                    <td>@entry.LastName</td>
+                    <td>@entry.DOB</td>
+                    <td>@entry.Gender</td>
+                    <td>@entry.EmailAddress</td>
+                    <td>
+                        <a asp-controller="Users" asp-action="Edit" asp-route-UserID="@entry.UserID" class="btn btn-info me-2 ">
+                            Edit
+                            <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-pencil-square" viewBox="0 0 16 16">
+                                <path d="M15.502 1.94a.5.5 0 0 1 0 .706L14.459 3.69l-2-2L13.502.646a.5.5 0 0 1 .707 0l1.293 1.293zm-1.75 2.456-2-2L4.939 9.21a.5.5 0 0 0-.121.196l-.805 2.414a.25.25 0 0 0 .316.316l2.414-.805a.5.5 0 0 0 .196-.12l6.813-6.814z" />
+                                <path fill-rule="evenodd" d="M1 13.5A1.5 1.5 0 0 0 2.5 15h11a1.5 1.5 0 0 0 1.5-1.5v-6a.5.5 0 0 0-1 0v6a.5.5 0 0 1-.5.5h-11a.5.5 0 0 1-.5-.5v-11a.5.5 0 0 1 .5-.5H9a.5.5 0 0 0 0-1H2.5A1.5 1.5 0 0 0 1 2.5z" />
+                            </svg>
+                        </a>
+                    </td>
+                    <td>
+                        <a asp-controller="Users" asp-action="Details" asp-route-UserID="@entry.UserID" class="btn btn-warning ms-2">
+                            Details
+                            <svg height="15px" version="1.1" id="Layer_1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink"
+                                 viewBox="0 0 512.001 512.001" xml:space="preserve">
+                                 <g>
+                                     <g>
+                                         <g>
+                                             <path style="fill:#231F20;" d="M436.376,88.867h-67.687V20.911C368.689,9.363,359.326,0,347.778,0H75.624 C64.075,0,54.713,9.363,54.713,20.911v381.312c0,11.548,9.362,20.911,20.911,20.911h67.687v67.956c0,11.548,9.363,20.911,20.911,20.911h272.156c11.548,0,20.911-9.363,20.911-20.911V109.778C457.287,98.228,447.926,88.867,436.376,88.867z M96.535,381.312V41.822h230.334c0,15.835,0,326.777,0,339.49C314.145,381.312,109.205,381.312,96.535,381.312z M415.467,470.178h-0.001H185.133v-47.045h162.647c11.548,0,20.911-9.362,20.911-20.911V130.689h46.776V470.178z" />
+                                             <path style="fill:#231F20;" d="M274.611,83.234H148.788c-11.548,0-20.911,9.362-20.911,20.911v78.127c0,11.55,9.363,20.911,20.911,20.911h125.822c11.548,0,20.911-9.363,20.911-20.911v-78.127C295.522,92.596,286.159,83.234,274.611,83.234z M253.7,161.361h-84.001v-36.306H253.7V161.361z" />
+                                             <path style="fill:#231F20;" d="M274.611,231.608H148.788c-11.548,0-20.911,9.363-20.911,20.911s9.363,20.911,20.911,20.911h125.822c11.548,0,20.911-9.363,20.911-20.911S286.159,231.608,274.611,231.608z" />
+                                             <path style="fill:#231F20;" d="M274.611,295.296H148.788c-11.548,0-20.911,9.363-20.911,20.911s9.363,20.911,20.911,20.911h125.822c11.55,0,20.911-9.362,20.911-20.911S286.159,295.296,274.611,295.296z" />
+                                         </g>
+                                     </g>
+                                 </g>
+                            </svg>
+                        </a>
+                    </td>
+                </tr>
+            }
+        </tbody>
+    </table>
+</div>
