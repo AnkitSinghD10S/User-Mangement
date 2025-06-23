@@ -110,17 +110,20 @@ namespace User_Mangement.Controllers
         {
             if (obj == null || obj.EmailId == null || obj.Password == null)
             {
-                ModelState.Clear();
                 ModelState.AddModelError("Fields", "this is required field");
                 return View(obj);
             }
 
             var user = db.UserDetails.FirstOrDefault(x => x.EmailAddress == obj.EmailId);
+            if (user == null)
+            {
+                ModelState.AddModelError("User_not_found", "Either Email or password is wrong");
+                return View(obj);
+            }
             var passwordDetails = db.PasswordDetails.FirstOrDefault(x => x.UserId == user.UserID);
             bool verified = BCrypt.Net.BCrypt.Verify($"{obj.Password}", passwordDetails?.Password);
-            if (user == null || !verified)
+            if (!verified)
             {
-                ModelState.Clear();
                 ModelState.AddModelError("User_not_found", "Either Email or password is wrong");
                 return View(obj);
             }
