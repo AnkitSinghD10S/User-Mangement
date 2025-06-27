@@ -12,7 +12,7 @@ namespace User_Mangement.Models
         public required String LastName { get; set; }
 
         [Required(ErrorMessage ="Date of Birth is required")]
-        public  DateTime DOB { get; set; }
+        public  DateOnly DOB { get; set; }
 
         public  required String Gender { get; set; }
 

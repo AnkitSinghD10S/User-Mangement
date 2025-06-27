@@ -1,6 +1,8 @@
-﻿<div class="container w-25 mt-5 ">
-    <div class="p-2 bg-info-subtle text-black rounded-3">
-        <h3 class="text-center font-monospace text-primary">@ViewBag.Message</h3>
-        <a asp-action="LoginUser" asp-controller="Auth" class="text-danger mx-4"> try loging in </a> 
+﻿    <div class="container d-flex align-content-center justify-content-center mt-4">
+    <div class="card shadow-lg p-4 border border-secondary rounded-4" style="width:480px; ">
+        <div class="p-2 bg-info-subtle text-black rounded-3">
+            <h3 class="text-center font-monospace text-primary">@ViewBag.Message</h3>
+            <a asp-action="LoginUser" asp-controller="Auth" class="text-danger" style="margin-left:150px;">try loging</a>
+        </div>
     </div>
 </div>
